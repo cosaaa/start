@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            font-size: 0.10rem;
+            background-color: #eee;
+        }
+
+        html {
+            font-size: 26.67vw !important;
+        }
+
+        #box {
+            /* position: relative; */
+            width: 3.4rem;
+            height: 50rem;
+            /* background-color: aquamarine; */
+            margin: 0 auto;
+
+        }
+
+        /* 导航 */
+        .nav {
+            position: fixed;
+            width: 100%;
+            height: 0.7rem;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 0rem;
+            z-index: 1;
+
+        }
+
+        .nL {
+            width: 0.65rem;
+            height: 0.45rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nL>svg {
+            margin: 0 0.2rem;
+            width: 0.2rem;
+            height: 0.2rem;
+        }
+
+        .nav>svg {
+            width: 0.15rem;
+            height: 0.15rem;
+        }
+
+        .nav>input {
+            position: relative;
+            width: 2.5rem;
+            height: 0.4rem;
+            border-radius: 20rem;
+            border: none;
+            padding-left: 0.35rem;
+            font-size: 0.12rem;
+            background-color: #eee;
+        }
+
+        .search {
+            position: absolute;
+            left: 0.75rem;
+        }
+
+        .fix {
+            height: 0.7rem;
+            margin: 0 auto;
+        }
+
+        /* 轮播图 */
+        .lbt {
+            width: 100%;
+            margin-top: 0.1rem;
+            height: 1.25rem;
+            background-color: black;
+            border-radius: 0.2rem;
+            overflow: hidden;
+        }
+
+        .lbtLi {
+            width: 1.5rem;
+            height: 0.5rem;
+            display: flex;
+        }
+
+        .lbtLi>ul>li {
+            width: 0.1rem;
+            height: 0.1rem;
+            background-color: black;
+            display: block;
+
+        }
+
+        /* 全球直采 */
+        .Global {
+            margin-top: 0.1rem;
+            width: 3.4rem;
+            height: 0.5rem;
+            display: flex;
+        }
+
+        .Global>li {
+            width: 0.85rem;
+            height: 0.20rem;
+            border-left: 1px #999 solid;
+            color: #999;
+            font-size: 0.17rem;
+            padding-left: 0.08rem;
+        }
+
+        .Global li:first-child {
+            border-left: none;
+        }
+
+        .axzia {
+            margin-top: -0.2rem;
+            height: 1.2rem;
+        }
+
+        /* 新人抢购 */
+        .newPer {
+            height: 1.1rem;
+            display: flex;
+        }
+
+        .newL {
+            width: 1.1rem;
+            height: 1.1rem;
+            background-color: white;
+            border-radius: 0.15rem;
+            box-sizing: border-box;
+            border: #3285D3 solid 0.02rem;
+            background-color: #3285D3;
+        }
+
+        .newUp {
+            height: 0.65rem;
+            border-radius: 0.15rem 0.15rem 0.3rem 0.3rem;
+            background-color: aliceblue;
+            overflow: hidden;
+
+        }
+
+        .newDown {
+            height: 0.45rem;
+            background-color: #3285D3;
+        }
+
+        .newC {
+            width: 1.1rem;
+            height: 1.1rem;
+            background-color: #FF3A65;
+            border-radius: 0.15rem;
+            margin: 0 0.05rem;
+            box-sizing: border-box;
+            border: #FF3A65 solid 0.02rem;
+        }
+
+        .newR {
+            width: 1.1rem;
+            height: 1.1rem;
+            background-color: #FF7648;
+            border-radius: 0.15rem;
+            box-sizing: border-box;
+            border: #FF7648 solid 0.02rem;
+        }
+
+        .newText1 {
+            text-align: center;
+            font-size: 0.14rem;
+            color: white;
+            margin: 0.02rem 0;
+        }
+
+        .newText2 {
+            text-align: center;
+            font-size: 0.1rem;
+            color: white;
+
+        }
+
+        /* 直播 */
+        .liveTittle {
+            height: 0.3rem;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            font-size: 0.16rem;
+        }
+
+        .liveTittle span {
+            padding-left: 0.08rem;
+            font-size: 0.12rem;
+            color: #999;
+        }
+
+        .liveTittle>p:last-child {
+            padding-left: 0.85rem;
+            font-size: 0.14;
+        }
+
+        .liveBox {
+            height: 1.6rem;
+            background-color: #999;
+        }
+
+        .liveSmallBox {
+            width: 1.2rem;
+            height: 1.6rem;
+            background-color: #FF3A65;
+            border-radius: 0.2rem;
+            background-size: cover;
+            background-image: url(//ci.xiaohongshu.com/68127e29-ed01-3cd0-9b86-7b7faeb0ee68?imageView2/2/w/1080/format/jpg/q/75);
+
+        }
+
+        .liveSmallBoxText {
+            padding-top: 1.1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+            height: 0.5rem;
+            border-radius: 0.2rem;
+            color: white;
+            font-size: 0.14rem;
+            padding-left: 0.1rem;
+            padding-top: -0.2rem;
+        }
+
+        .liveName {
+            font-size: 0.1rem;
+        }
+
+        .liveHeader {
+            height: 0.1rem;
+            display: flex;
+        }
+
+        .headerImg {
+            width: 0.2rem;
+            height: 0.2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 0.05rem;
+        }
+
+        /* 限时特优 */
+        .TimeLimit {
+            height: 2.3rem;
+            background-color: white;
+            margin-top: 0.1rem;
+            border-radius: 0.2rem;
+            overflow: hidden;
+        }
+
+        .TimeTittle {
+            height: 0.3rem;
+            background-color: white;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .TimeTittle>p:first-child {
+            margin-left: 0.1rem;
+            font-size: 0.18rem;
+            padding-right: 0.15rem;
+        }
+
+        .Time {
+            display: flex;
+        }
+
+        .Time>p {
+            color: #fff;
+            background-color: #FF3A65;
+            border-radius: 0.05rem;
+            height: 0.18rem;
+            width: 0.17rem;
+            text-align: center;
+        }
+
+        .TimeTittle>p:last-child {
+            font-size: 0.12rem;
+            color: #999;
+            padding-left: 0.2rem;
+        }
+
+        .TimeUp {
+            height: 1rem;
+            /* background-color: aliceblue; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .TimeUpMini {
+            width: 0.8rem;
+            height: 1rem;
+            /* background-color: bisque; */
+
+        }
+
+        .TimeUpMiniImg {
+            height: 0.8rem;
+            overflow: hidden;
+        }
+
+        .TimeUpMiniPrice {
+            height: 0.2rem;
+            text-align: center;
+            font-size: 0.14rem;
+            color: #FF3A65;
+        }
+
+        .TimeDown {
+            height: 1rem;
+            display: flex;
+        }
+
+        .TimeDownMini {
+            width: 1.7rem;
+            height: 1rem;
+            /* background-color: #666; */
+        }
+
+        .TimeDownMiniUp {
+            height: 0.4rem;
+        }
+
+        .TimeDownMiniUp>p:first-child {
+            margin-left: 0.1rem;
+            font-size: 0.14rem;
+        }
+
+        .TimeDownMiniUp>p:last-child {
+            margin-left: 0.1rem;
+            color: #999;
+            font-size: 0.12rem;
+        }
+
+        .TimeDownMiniUp>p>button {
+            width: 0.4rem;
+            height: 0.16rem;
+            border: none;
+            border-radius: 0.2rem;
+            background-color: #FF3A65;
+            font-size: 0.06rem;
+            margin-left: 0.15rem;
+            color: #fff;
+        }
+
+        .TimeDownMiniDown {
+            height: 0.7rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .TimeDownMiniDownS {
+            width: 0.8rem;
+            height: 0.6rem;
+            overflow: hidden;
+
+        }
+
+        /* 推荐选项卡 */
+        .recommend {
+            height: 0.4rem;
+            /* background-color: #fff; */
+            /* margin-top: 0.1rem; */
+            display: flex;
+            font-size: 0.16rem;
+            justify-content: space-between;
+            align-items: center;
+            color: #999;
+            padding-left: 0.1rem;
+            padding-right: 0.1rem;
+        }
+
+        .recommend .active {
+            color: black;
+        }
+
+        .recommendBox {
+            height: 50rem;
+            display: none;
+
+        }
+
+        .recommendBox.active {
+            display: block;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .commodityL {
+            width: 1.65rem;
+            height: 50rem;
+            /* background-color: cadetblue; */
+
+        }
+
+        .commodityLMini {
+            margin-top: 0.1rem;
+            height: 2.45rem;
+            background-color: white;
+            border-radius: 0.1rem;
+            overflow: hidden;
+
+        }
+
+        .commodityLMiniText svg {
+            width: 0.1rem;
+            height: 0.1rem;
+        }
+
+        .commodityLMiniTextuser {
+            margin-top: 0.1rem;
+        }
+
+        .commodityLMiniImg {
+            height: 1.3rem;
+            /* background-color: blue; */
+            overflow: hidden;
+        }
+
+        .commodityName {
+            font-size: 0.15rem;
+            margin-top: 0.05rem;
+        }
+
+        .commodityIntroduction {
+            color: #666;
+            margin: 0.02rem 0;
+
+        }
+
+        .commodityLMiniText {
+            padding-left: 0.1rem;
+            padding-right: 0.1rem;
+        }
+
+        .commodityPrice {
+            font-size: 0.16rem;
+            color: #FF3A65;
+        }
+
+        .commodityPrice>button {
+            background-color: #FF3A65;
+            border: none;
+            border-radius: 0.03rem;
+            font-size: 0.08rem;
+            width: 0.5rem;
+            color: #fff;
+        }
+
+        .commodityR1 {
+            width: 1.65rem;
+            height: 50rem;
+            /* background-color: blue; */
+            overflow: hidden;
+        }
+
+        .commodityR1Mini {
+            margin-top: 0.1rem;
+            height: 2.2rem;
+            background-color: white;
+            border-radius: 0.1rem;
+            overflow: hidden;
+        }
+        .lbtbox{
+            width: 500%;
+            display: flex;
+            height: 100%;
+            transition: all 0.3s;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .lbt{
+            position: relative;
+        }
+        .lbtLi{
+            position: absolute;
+            bottom: 0rem;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 0.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lbtLi > li{
+            width: 0.07rem;
+            height: 0.07rem;
+            border-radius: 50%;
+            background-color: rgba(151, 69, 69, 0.6);
+            margin: 0 0.03rem;
+        }
+        .liStyle{
+            background-color: #fff!important;
+        }
+        .shopping{
+            position:fixed;
+            width: 0.5rem;
+            height: 0.5rem;
+            top: 5rem;
+            left: 3rem;
+            /* background-color: white; */
+            /* border-radius: 50%; */
+        }
+        .shopping svg{
+            width: 0.5rem;
+            height: 0.5rem;
+            /* color: rgba(0, 0, 0, 0.6); */
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <div class="nL">
+            <svg t="1600329939902" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="6078" width="20" height="20">
+                <path
+                    d="M781 868.4H95c-16.6 0-30 13.4-30 30s13.4 30 30 30h686c16.6 0 30-13.4 30-30s-13.4-30-30-30zM861 106H95c-16.6 0-30 13.4-30 30s13.4 30 30 30h766c16.6 0 30-13.4 30-30s-13.4-30-30-30zM95 547.2h513.9c16.6 0 30-13.4 30-30s-13.4-30-30-30H95c-16.6 0-30 13.4-30 30s13.4 30 30 30z"
+                    p-id="6079"></path>
+            </svg>
+            <p>更多</p>
+        </div>
+        <input type="text" placeholder="大家都在搜“搜罗美护神仙品牌”">
+        <svg t="1600329590310" class="icon search" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="3821" width="20" height="20">
+            <path
+                d="M438.070857 763.794286a329.508571 329.508571 0 0 0 191.579429-61.732572l203.136 203.154286a48.603429 48.603429 0 0 0 34.706285 14.134857c27.867429 0 48-21.430857 48-48.859428 0-12.854857-4.278857-24.850286-13.714285-34.267429L699.922286 633.910857c42.422857-55.716571 67.712-124.708571 67.712-199.716571 0-181.284571-148.278857-329.563429-329.563429-329.563429-181.723429 0-329.563429 148.278857-329.563428 329.563429S256.347429 763.794286 438.070857 763.794286z m0-71.149715c-141.860571 0-258.432-116.992-258.432-258.432 0-141.421714 116.571429-258.432 258.432-258.432 141.421714 0 258.432 117.010286 258.432 258.432 0 141.44-117.010286 258.432-258.432 258.432z"
+                p-id="3822"></path>
+        </svg>
+        <div class="nL">
+            <svg t="1600330016580" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="6824" width="20" height="20">
+                <path
+                    d="M882.6 960.3H626.3c-43 0-78-35-78-78V626c0-43 35-78 78-78h256.3c43 0 78 35 78 78v256.3c0 43-35 78-78 78zM626.3 604c-12.1 0-22 9.9-22 22v256.3c0 12.1 9.9 22 22 22h256.3c12.1 0 22-9.9 22-22V626c0-12.1-9.9-22-22-22H626.3zM397.7 960.3H141.4c-43 0-78-35-78-78V626c0-43 35-78 78-78h256.3c43 0 78 35 78 78v256.3c0 43-34.9 78-78 78zM141.4 604c-12.1 0-22 9.9-22 22v256.3c0 12.1 9.9 22 22 22h256.3c12.1 0 22-9.9 22-22V626c0-12.1-9.9-22-22-22H141.4zM882.6 475.6H626.3c-43 0-78-35-78-78V141.3c0-43 35-78 78-78h256.3c43 0 78 35 78 78v256.3c0 43-35 78-78 78zM626.3 119.3c-12.1 0-22 9.9-22 22v256.3c0 12.1 9.9 22 22 22h256.3c12.1 0 22-9.9 22-22V141.3c0-12.1-9.9-22-22-22H626.3zM397.7 475.6H141.4c-43 0-78-35-78-78V141.3c0-43 35-78 78-78h256.3c43 0 78 35 78 78v256.3c0 43-34.9 78-78 78zM141.4 119.3c-12.1 0-22 9.9-22 22v256.3c0 12.1 9.9 22 22 22h256.3c12.1 0 22-9.9 22-22V141.3c0-12.1-9.9-22-22-22H141.4z"
+                    fill="" p-id="6825"></path>
+            </svg>
+            <p>分类</p>
+        </div>
+    </div>
+    <div id="box">
+        <div class="fix"></div>
+        <!-- 轮播图 -->
+        <div class="lbt">
+            <div class="lbtbox">
+                <img width="20%"
+                    src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/da777ad36da9d71f470464e5a20174d8.jpg?w=2452&h=920"
+                    alt="">
+                <img width="20%"
+                    src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b9c1fa5c24dc1c943ac297d1f5dc2285.jpg?thumb=1&w=720&h=360"
+                    alt="">
+                <img width="20%"
+                    src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1366a818581bdae94ffe78423a50b249.jpg?thumb=1&w=720&h=360"
+                    alt="">
+                <img width="20%"
+                    src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/14879bffb504952d1d92b20d6e5f8e26.jpeg?thumb=1&w=720&h=360"
+                    alt="">
+                <img width="20%"
+                    src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/14879bffb504952d1d92b20d6e5f8e26.jpeg?thumb=1&w=720&h=360"
+                    alt="">
+            </div>
+            <div class="lbtLi">
+
+                <li class="liStyle liSon"></li>
+                <li class="liSon"></li>
+                <li class="liSon"></li>
+                <li class="liSon"></li>
+                <li class="liSon"></li>
+
+            </div>
+
+        </div>
+        <!-- 全球直采 -->
+        <div class="Global">
+
+            <li>全球直采</li>
+            <li>正品保证</li>
+            <li>售后无忧</li>
+            <li>假一赔十</li>
+
+        </div>
+        <!-- axzia -->
+        <div class="axzia">
+            <img width="100%" src="img/Screenshot_20200917_191734.jpg" alt="">
+        </div>
+        <!-- 新人抢购 -->
+        <div class="newPer">
+            <div class="newL">
+                <div class="newUp"><img width="100%" src="img/台灯.jpg" alt=""></div>
+                <p class="newText1">新人1元抢购</p>
+                <p class="newText2">蓝牙耳机￥1</p>
+            </div>
+            <div class="newC">
+                <div class="newUp"><img width="100%" src="img/台灯.jpg" alt=""></div>
+                <p class="newText1">新人1元抢购</p>
+                <p class="newText2">蓝牙耳机￥1</p>
+            </div>
+            <div class="newR">
+                <div class="newUp"><img width="100%" src="img/台灯.jpg" alt=""></div>
+                <p class="newText1">新人1元抢购</p>
+                <p class="newText2">蓝牙耳机￥1</p>
+            </div>
+        </div>
+        <!-- 直播 -->
+        <!-- <div class="live">
+            <div class="liveTittle">
+                <p>直播吧<span>每晚18:00，直播福利享不停</span></p>
+                <p>更多></p>
+            </div>
+            <div class="liveBox">
+                <div class="liveSmallBox">
+                    <div class="liveSmallBoxText">
+                        <p>十一出行&居家...</p>
+                        <div class="liveHeader">
+                            <div class="headerImg">
+                                <img width="100%" src="//ci.xiaohongshu.com/68127e29-ed01-3cd0-9b86-7b7faeb0ee68?imageView2/2/w/1080/format/jpg/q/75" alt="">
+                            </div>
+                            <span class="liveName">夜忙症</span></div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- 限时特优 -->
+        <div class="TimeLimit">
+            <div class="TimeTittle">
+                <p>限时购</p>
+                <div class="Time">
+                    <p>19</p>:<p>39</p>: <p>21</p>
+                </div>
+                <p>限时限量，低价疯抢</p>
+            </div>
+            <div class="TimeUp">
+                <div class="TimeUpMini">
+                    <div class="TimeUpMiniImg"><img width="100%"
+                            src="https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i2/2208115161213/O1CN01Dd7MQa1Kpb2kqBTb4_!!2208115161213.jpg_60x60q90.jpg"
+                            alt=""></div>
+                    <div class="TimeUpMiniPrice">
+                        <p>￥122</p>
+                    </div>
+                </div>
+                <div class="TimeUpMini">
+                    <div class="TimeUpMiniImg"><img width="100%"
+                            src="https://gw.alicdn.com/bao/uploaded/i2/1771429415/TB1JNhVbjuhSKJjSspmXXcQDpXa_!!0-item_pic.jpg_180x180xz.jpg"
+                            alt=""></div>
+                    <div class="TimeUpMiniPrice">
+                        <p>￥122</p>
+                    </div>
+                </div>
+                <div class="TimeUpMini">
+                    <div class="TimeUpMiniImg"><img width="100%"
+                            src="https://gw.alicdn.com/bao/uploaded/i1/19037025982733783/T13.wIXe4fXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                            alt=""></div>
+                    <div class="TimeUpMiniPrice">
+                        <p>￥122</p>
+                    </div>
+                </div>
+                <div class="TimeUpMini">
+                    <div class="TimeUpMiniImg"><img width="100%"
+                            src="https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i2/2208115161213/O1CN01Dd7MQa1Kpb2kqBTb4_!!2208115161213.jpg_60x60q90.jpg"
+                            alt=""></div>
+                    <div class="TimeUpMiniPrice">
+                        <p>￥122</p>
+                    </div>
+                </div>
+            </div>
+            <div class="TimeDown">
+                <div class="TimeDownMini">
+                    <div class="TimeDownMiniUp">
+                        <p>福利社<button>自营</button></p>
+                        <p>雅漾保湿喷雾专业低至￥11</p>
+                    </div>
+                    <div class="TimeDownMiniDown">
+                        <div class="TimeDownMiniDownS"> <img width="100%"
+                                src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                                alt=""></div>
+                        <div class="TimeDownMiniDownS"><img width="100%"
+                                src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                                alt=""></div>
+                    </div>
+                </div>
+                <div class="TimeDownMini">
+                    <div class="TimeDownMiniUp">
+                        <p>福利社<button>自营</button></p>
+                        <p>雅漾保湿喷雾专业低至￥11</p>
+                    </div>
+                    <div class="TimeDownMiniDown">
+                        <div class="TimeDownMiniDownS"> <img width="100%"
+                                src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                                alt=""></div>
+                        <div class="TimeDownMiniDownS"><img width="100%"
+                                src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                                alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 推荐选项卡 -->
+        <div class="recommend">
+            <li class="active">推荐</li>
+            <li>服装</li>
+            <li>包包</li>
+            <li>护肤</li>
+            <li>内衣</li>
+            <li>鞋靴</li>
+        </div>
+        <!-- 推荐 -->
+        <div class="recommendBox active">
+            <div class="commodityL">
+                <div class="commodityLMini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://gdp.alicdn.com/imgextra/i4/634491/O1CN01H7judY1j2vLrFbnKU_!!634491.jpg" alt="">
+                    </div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityLMiniTextuser"> <svg t="1600411077632" class="icon" viewBox="0 0 1024 1024"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11267" width="200" height="200">
+                                <path
+                                    d="M864 800v160H160v-160c0-149.44 93.12-277.12 224.32-328 36.16 25.28 80 40 127.68 40s91.52-14.72 127.68-40c45.76 17.6 87.04 44.8 121.28 79.04C824.64 614.72 864 702.72 864 800z"
+                                    fill="#E0EBFE" p-id="11268"></path>
+                                <path
+                                    d="M160 992h704a32 32 0 0 0 32-32v-160a381.44 381.44 0 0 0-112.416-271.584 384.544 384.544 0 0 0-86.304-64.32A255.584 255.584 0 0 0 768 288c0-141.152-114.848-256-256-256S256 146.848 256 288c0 66.304 25.952 128.96 70.624 176C206.144 530.72 128 659.936 128 800v160a32 32 0 0 0 32 32z m160-704c0-105.888 86.112-192 192-192s192 86.112 192 192c0 62.976-30.848 121.92-82.656 157.76-64.064 44.8-154.496 44.864-218.816-0.064A191.744 191.744 0 0 1 320 288zM192 800c0-126.016 75.904-241.472 190.144-292.224A253.248 253.248 0 0 0 512 544c46.272 0 90.56-12.896 129.664-36.096a319.488 319.488 0 0 1 96.64 65.76A317.888 317.888 0 0 1 832 800v128H192v-128z"
+                                    fill="#5465CF" p-id="11269"></path>
+                            </svg>大家都在买</p>
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="commodityR1">
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 服装-->
+        <div class="recommendBox">
+            <div class="commodityL">
+                <div class="commodityLMini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityLMiniTextuser"> <svg t="1600411077632" class="icon" viewBox="0 0 1024 1024"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11267" width="200" height="200">
+                                <path
+                                    d="M864 800v160H160v-160c0-149.44 93.12-277.12 224.32-328 36.16 25.28 80 40 127.68 40s91.52-14.72 127.68-40c45.76 17.6 87.04 44.8 121.28 79.04C824.64 614.72 864 702.72 864 800z"
+                                    fill="#E0EBFE" p-id="11268"></path>
+                                <path
+                                    d="M160 992h704a32 32 0 0 0 32-32v-160a381.44 381.44 0 0 0-112.416-271.584 384.544 384.544 0 0 0-86.304-64.32A255.584 255.584 0 0 0 768 288c0-141.152-114.848-256-256-256S256 146.848 256 288c0 66.304 25.952 128.96 70.624 176C206.144 530.72 128 659.936 128 800v160a32 32 0 0 0 32 32z m160-704c0-105.888 86.112-192 192-192s192 86.112 192 192c0 62.976-30.848 121.92-82.656 157.76-64.064 44.8-154.496 44.864-218.816-0.064A191.744 191.744 0 0 1 320 288zM192 800c0-126.016 75.904-241.472 190.144-292.224A253.248 253.248 0 0 0 512 544c46.272 0 90.56-12.896 129.664-36.096a319.488 319.488 0 0 1 96.64 65.76A317.888 317.888 0 0 1 832 800v128H192v-128z"
+                                    fill="#5465CF" p-id="11269"></path>
+                            </svg>大家都在买</p>
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="commodityR1">
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://gw.alicdn.com/bao/uploaded/i3/TB1aw7XNVXXXXXVaFXXXXXXXXXX_!!0-item_pic.jpg_180x180xz.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 包包 -->
+        <div class="recommendBox">
+            <div class="commodityL">
+                <div class="commodityLMini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://img.alicdn.com/imgextra/i2/1980545515/TB2WM6VrfImBKNjSZFlXXc43FXa_!!1980545515-0-beehive-scenes.jpg_250x250xz.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityLMiniTextuser"> <svg t="1600411077632" class="icon" viewBox="0 0 1024 1024"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11267" width="200" height="200">
+                                <path
+                                    d="M864 800v160H160v-160c0-149.44 93.12-277.12 224.32-328 36.16 25.28 80 40 127.68 40s91.52-14.72 127.68-40c45.76 17.6 87.04 44.8 121.28 79.04C824.64 614.72 864 702.72 864 800z"
+                                    fill="#E0EBFE" p-id="11268"></path>
+                                <path
+                                    d="M160 992h704a32 32 0 0 0 32-32v-160a381.44 381.44 0 0 0-112.416-271.584 384.544 384.544 0 0 0-86.304-64.32A255.584 255.584 0 0 0 768 288c0-141.152-114.848-256-256-256S256 146.848 256 288c0 66.304 25.952 128.96 70.624 176C206.144 530.72 128 659.936 128 800v160a32 32 0 0 0 32 32z m160-704c0-105.888 86.112-192 192-192s192 86.112 192 192c0 62.976-30.848 121.92-82.656 157.76-64.064 44.8-154.496 44.864-218.816-0.064A191.744 191.744 0 0 1 320 288zM192 800c0-126.016 75.904-241.472 190.144-292.224A253.248 253.248 0 0 0 512 544c46.272 0 90.56-12.896 129.664-36.096a319.488 319.488 0 0 1 96.64 65.76A317.888 317.888 0 0 1 832 800v128H192v-128z"
+                                    fill="#5465CF" p-id="11269"></path>
+                            </svg>大家都在买</p>
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="commodityR1">
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://img.alicdn.com/imgextra/i3/1579553402/O1CN01Ms0Q9t1b09zFFVlDU_!!1579553402-0-daren.jpg_250x250xz.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 护肤 -->
+        <div class="recommendBox">
+            <div class="commodityL">
+                <div class="commodityLMini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://img.alicdn.com/imgextra/i2/32089210/O1CN01hWd2ED2HuEODnfsa3_!!0-saturn_solar.jpg_270x270.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityLMiniTextuser"> <svg t="1600411077632" class="icon" viewBox="0 0 1024 1024"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11267" width="200" height="200">
+                                <path
+                                    d="M864 800v160H160v-160c0-149.44 93.12-277.12 224.32-328 36.16 25.28 80 40 127.68 40s91.52-14.72 127.68-40c45.76 17.6 87.04 44.8 121.28 79.04C824.64 614.72 864 702.72 864 800z"
+                                    fill="#E0EBFE" p-id="11268"></path>
+                                <path
+                                    d="M160 992h704a32 32 0 0 0 32-32v-160a381.44 381.44 0 0 0-112.416-271.584 384.544 384.544 0 0 0-86.304-64.32A255.584 255.584 0 0 0 768 288c0-141.152-114.848-256-256-256S256 146.848 256 288c0 66.304 25.952 128.96 70.624 176C206.144 530.72 128 659.936 128 800v160a32 32 0 0 0 32 32z m160-704c0-105.888 86.112-192 192-192s192 86.112 192 192c0 62.976-30.848 121.92-82.656 157.76-64.064 44.8-154.496 44.864-218.816-0.064A191.744 191.744 0 0 1 320 288zM192 800c0-126.016 75.904-241.472 190.144-292.224A253.248 253.248 0 0 0 512 544c46.272 0 90.56-12.896 129.664-36.096a319.488 319.488 0 0 1 96.64 65.76A317.888 317.888 0 0 1 832 800v128H192v-128z"
+                                    fill="#5465CF" p-id="11269"></path>
+                            </svg>大家都在买</p>
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="commodityR1">
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/1029624918/O1CN01Ms9xqb1mCUSE9horg_!!1029624918-0-lubanu-s.jpg_250x250.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recommendBox">
+            <div class="commodityL">
+                <div class="commodityLMini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://img.alicdn.com/imgextra/i2/127167800/O1CN010pETrM27URw6iXJXL_!!0-saturn_solar.jpg_270x270.jpg"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityLMiniTextuser"> <svg t="1600411077632" class="icon" viewBox="0 0 1024 1024"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11267" width="200" height="200">
+                                <path
+                                    d="M864 800v160H160v-160c0-149.44 93.12-277.12 224.32-328 36.16 25.28 80 40 127.68 40s91.52-14.72 127.68-40c45.76 17.6 87.04 44.8 121.28 79.04C824.64 614.72 864 702.72 864 800z"
+                                    fill="#E0EBFE" p-id="11268"></path>
+                                <path
+                                    d="M160 992h704a32 32 0 0 0 32-32v-160a381.44 381.44 0 0 0-112.416-271.584 384.544 384.544 0 0 0-86.304-64.32A255.584 255.584 0 0 0 768 288c0-141.152-114.848-256-256-256S256 146.848 256 288c0 66.304 25.952 128.96 70.624 176C206.144 530.72 128 659.936 128 800v160a32 32 0 0 0 32 32z m160-704c0-105.888 86.112-192 192-192s192 86.112 192 192c0 62.976-30.848 121.92-82.656 157.76-64.064 44.8-154.496 44.864-218.816-0.064A191.744 191.744 0 0 1 320 288zM192 800c0-126.016 75.904-241.472 190.144-292.224A253.248 253.248 0 0 0 512 544c46.272 0 90.56-12.896 129.664-36.096a319.488 319.488 0 0 1 96.64 65.76A317.888 317.888 0 0 1 832 800v128H192v-128z"
+                                    fill="#5465CF" p-id="11269"></path>
+                            </svg>大家都在买</p>
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="commodityR1">
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i1/917226893/O1CN01GOzKyL20n2hheNK7F_!!0-item_pic.jpg_250x250.jpg_.webp"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recommendBox">
+            <div class="commodityL">
+                <div class="commodityLMini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://g-search2.alicdn.com/img/bao/uploaded/i4/i1/888762839/O1CN017xTXtW1WqJ37JdOkh_!!888762839-0-lubanu-s.jpg_250x250.jpg_.webp"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityLMiniTextuser"> <svg t="1600411077632" class="icon" viewBox="0 0 1024 1024"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11267" width="200" height="200">
+                                <path
+                                    d="M864 800v160H160v-160c0-149.44 93.12-277.12 224.32-328 36.16 25.28 80 40 127.68 40s91.52-14.72 127.68-40c45.76 17.6 87.04 44.8 121.28 79.04C824.64 614.72 864 702.72 864 800z"
+                                    fill="#E0EBFE" p-id="11268"></path>
+                                <path
+                                    d="M160 992h704a32 32 0 0 0 32-32v-160a381.44 381.44 0 0 0-112.416-271.584 384.544 384.544 0 0 0-86.304-64.32A255.584 255.584 0 0 0 768 288c0-141.152-114.848-256-256-256S256 146.848 256 288c0 66.304 25.952 128.96 70.624 176C206.144 530.72 128 659.936 128 800v160a32 32 0 0 0 32 32z m160-704c0-105.888 86.112-192 192-192s192 86.112 192 192c0 62.976-30.848 121.92-82.656 157.76-64.064 44.8-154.496 44.864-218.816-0.064A191.744 191.744 0 0 1 320 288zM192 800c0-126.016 75.904-241.472 190.144-292.224A253.248 253.248 0 0 0 512 544c46.272 0 90.56-12.896 129.664-36.096a319.488 319.488 0 0 1 96.64 65.76A317.888 317.888 0 0 1 832 800v128H192v-128z"
+                                    fill="#5465CF" p-id="11269"></path>
+                            </svg>大家都在买</p>
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="commodityR1">
+                <div class="commodityR1Mini">
+                    <div class="commodityLMiniImg"><img width="100%"
+                            src="https://g-search2.alicdn.com/img/bao/uploaded/i4/i2/1771345710/O1CN01R9Odoa1s3E9seNuFu_!!0-item_pic.jpg_250x250.jpg_.webp"
+                            alt=""></div>
+                    <div class="commodityLMiniText">
+                        <p class="commodityName">意大利进口</p>
+                        <p class="commodityIntroduction">淡化眼纹眼袋粉底液新版蓝标大师啥啥啥啥啥啥</p>
+                        <p class="commodityPrice">￥588 <button>限时购</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 购物车按钮 -->
+        <a href="shoppingcar.html"><div class="shopping"><svg t="1600744254559" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1642" width="200" height="200"><path d="M679.6 390.7l-334.4-0.2c-0.7 0-1.4 0-2.1 0.1 4.8 26.2 11 60.6 19.2 105.9h295.3c13-1.3 17.8-7 22.4-18.3 0.2-0.4 0.3-0.8 0.4-1.1l14.8-65.9c3-12.2-6.5-20.5-15.6-20.5z" fill="#2c2c2c" p-id="1643"></path><path d="M511.6 103c-225.9 0-409 183.1-409 409s183.1 409 409 409 409-183.1 409-409-183.1-409-409-409zM380.4 779.1c-28.1 0-50.9-22.8-50.9-50.9s22.8-50.9 50.9-50.9 50.9 22.8 50.9 50.9-22.8 50.9-50.9 50.9z m283.4 0c-28.1 0-50.9-22.8-50.9-50.9s22.8-50.9 50.9-50.9 50.9 22.8 50.9 50.9-22.8 50.9-50.9 50.9z m60.1-369.5l-17.6 78c-5.3 22.3-21.1 37.3-38.7 37.9h-300c1.7 9.5 3.5 19.3 5.4 29.6 2.1 11.8 6.2 19.5 19 21.9h289.2c8.3 0 15 6.7 15 15 0 5.2-4 14.4-15 14.7H380.4c-20.7-1.9-33.7-19-37.3-37.3L301 326.6h-24.2c-8.3 0-15-6.7-15-15s6.7-15 15-15h36.7c6.2 0 11.5 3.7 13.8 9.1 0.1 0.3 0.3 0.7 0.4 1 0.2 0.5 0.4 0.8 10.2 54.7H688c21.2 0.1 41.8 15.5 35.9 48.2z" fill="#2c2c2c" p-id="1644"></path></svg></div></a> 
+
+    </div>
+    <script src="tab.js"></script>
+    <script>
+        var recommend = document.getElementsByClassName('recommend')[0]
+        var recommendlis = recommend.getElementsByTagName('li')
+        var recommendBox = document.getElementsByClassName('recommendBox')
+        var lbt = document.getElementsByClassName('lbt')[0]
+        var img = lbt.getElementsByTagName('img')
+        var lbtbox = document.querySelector(".lbtbox");
+        var index = 0;
+        function $(num){
+            if(num.charAt[0]==="#"){
+                return document.querySelector(num);
+            }else{
+                return document.querySelectorAll(num);
+            }
+        }
+        function log(){
+            console.log(...arguments);
+        }
+
+    
+        new Tab(recommendlis, recommendBox);
+        
+        setInterval(() => {
+            
+            $(".liSon")[index].classList.remove("liStyle");
+            index++;
+            if(index >= img.length){
+                index = 0;
+            }
+            $(".liSon")[index].classList.add("liStyle");
+            lbtbox.style.left = -index*img[0].offsetWidth+"px";
+            
+            
+        }, 1500);
+
+        // var car = document.getElementsByClassName('car')[0]
+        // var shopping = document.getElementsByClassName('shopping')[0]
+        // shopping.onclick = function(){
+        //     car.style.src = '购物车.html'
+        // }
+    </script>
+</body>
+
+</html>
